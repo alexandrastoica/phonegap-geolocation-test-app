@@ -1,2 +1,2 @@
 # phonegap-geolocation-test-app
-Test app for geolocation using phonegap.
+A simple PhoneGap Build application for testing geolocation.
