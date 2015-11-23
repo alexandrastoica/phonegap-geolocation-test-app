@@ -2,13 +2,40 @@
 $(document).on('pageinit', function() {
 	
 	//set up listener for button click
-	$(document).on('click', getPosition);
+	$('#getLocationButton').on('click', getPosition);
+	
+	//set up listener for update button set to on
+	if($('#updateLocationButton').val() == 'on')
+	{
+		updatePosition();
+	} else{
+		navigator.geolocation.clearWatch(watchID);
+	}
 	
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
 	
 });
 
+function updatePosition(){
+	var watchID = navigator.geolocation.watchPosition(success, fail, locationOptions);	
+}
+
+function success(position) {
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	$('#lattextup').val(lat);
+	$('#longtextup').val(lon);
+}
+function fail(error) {
+ //do something with the error 
+}
+
+var locationOptions = {
+ maximumAge: 10000,
+ timeout: 6000,
+ enableHighAccuracy: true
+};
 
 //Call this function when you want to get the current position
 function getPosition() {
