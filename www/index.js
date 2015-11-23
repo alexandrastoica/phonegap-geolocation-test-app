@@ -20,6 +20,11 @@ $(document).on('pageinit', function() {
 });
 
 function updatePosition(){
+	var locationOptions = {
+		maximumAge: 10000,
+		timeout: 6000,
+		enableHighAccuracy: true
+	};
 	var watchID = navigator.geolocation.watchPosition(success, fail, locationOptions);	
 }
 
@@ -33,11 +38,7 @@ function fail(error) {
 	$('#time').val("Error getting data: " + error);
 }
 
-var locationOptions = {
- maximumAge: 10000,
- timeout: 6000,
- enableHighAccuracy: true
-};
+
 
 //Call this function when you want to get the current position
 function getPosition() {
