@@ -5,12 +5,14 @@ $(document).on('pageinit', function() {
 	$('#getLocationButton').on('click', getPosition);
 	
 	//set up listener for update button set to on
-	if($('#updateLocationButton').val() == 'on')
-	{
+	$(document).delegate("#updateLocation", "tap", function() {
+		if($("#updateLocation").val() == 'on'){
 		updatePosition();
-	} else{
-		navigator.geolocation.clearWatch(watchID);
-	}
+		} else{
+			navigator.geolocation.clearWatch(watchID);
+		}
+	});
+	
 	
 	//change time box to show message
 	$('#time').val("Press the button to get location data");
