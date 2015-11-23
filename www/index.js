@@ -5,10 +5,10 @@ $(document).on('pageinit', function() {
 	$('#getLocationButton').on('click', getPosition);
 	
 	//set up listener for update button set to on
-	$(document).delegate("#updateLocation", "tap", function() {
+	$("#updateLocation").on("tap", function() {
 		if($("#updateLocation").val() == 'on'){
-		updatePosition();
-		} else{
+			updatePosition();
+		}else{
 			navigator.geolocation.clearWatch(watchID);
 		}
 	});
@@ -30,7 +30,7 @@ function success(position) {
 	$('#longtextup').val(lon);
 }
 function fail(error) {
- //do something with the error 
+	$('#time').val("Error getting data: " + error);
 }
 
 var locationOptions = {
